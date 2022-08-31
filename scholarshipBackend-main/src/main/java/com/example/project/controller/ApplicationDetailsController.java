@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.project.services.ApplicationDetailsService;
-import com.example.project.models.Application_details;
+import com.example.project.models.ApplicationDetails;
 import com.example.project.models.DocumentDetails;
 import com.example.project.modelsDto.DocDto;
 
@@ -33,52 +33,52 @@ public class ApplicationDetailsController {
 	@Autowired
 	ApplicationDetailsService appSer;
 	
-	Application_details app=new Application_details();
+	ApplicationDetails app=new ApplicationDetails();
 	
 	@GetMapping("/employee/requests")
-	public List<Application_details> getAllRequests()
+	public List<ApplicationDetails> getAllRequests()
 	{
-		return (List<Application_details>)appSer.getAllRequests();
+		return (List<ApplicationDetails>)appSer.getAllRequests();
 	}
 	
 	@GetMapping("/employee/requests/{id}")
-	public Application_details getAppDetailsByID(@PathVariable Integer id){
+	public ApplicationDetails getAppDetailsByID(@PathVariable Integer id){
 		return appSer.getAppDetailsById(id);
 	}
 	
 	@PutMapping("/employee/requestApprove/{id}")
-	public void requestApprove(@PathVariable Integer id,@RequestBody Application_details appdetails)
+	public void requestApprove(@PathVariable Integer id,@RequestBody ApplicationDetails appdetails)
 	{
 		appSer.requestApprove(id, appdetails);
 	}
 	
 	@PutMapping("/employee/requestReject/{id}")
-	public void requestReject(@PathVariable Integer id,@RequestBody Application_details appdetails)
+	public void requestReject(@PathVariable Integer id,@RequestBody ApplicationDetails appdetails)
 	{
 		appSer.requestReject(id, appdetails);
 	}
 	
 	@PutMapping("/request/assign/{id}")
-	public void assignedTo(@PathVariable Integer id,@RequestBody Application_details assign)
+	public void assignedTo(@PathVariable Integer id,@RequestBody ApplicationDetails assign)
 	{
 		System.out.println("assigning part............"+" "+assign);
 		appSer.assigned(id, assign);
 	}
 	
 	@PutMapping("/request/student")
-	public void updateApp(@RequestBody Application_details assign)
+	public void updateApp(@RequestBody ApplicationDetails assign)
 	{
 		appSer.updateApp(assign);
 	}
 	
 	
 	@PutMapping("/appDetails")
-	public String puttAppDet(@RequestBody Application_details appDet, @RequestParam(value="id" ,required= true) int id) {
+	public String puttAppDet(@RequestBody ApplicationDetails appDet, @RequestParam(value="id" ,required= true) int id) {
 		return appSer.putAppDetails(appDet, id);
 	}
 	
 	@PostMapping("/appDetails")
-	public int postAppDet(@RequestBody Application_details appDet) {
+	public int postAppDet(@RequestBody ApplicationDetails appDet) {
 		return appSer.postAppDetails(appDet);
 	}
 	
@@ -94,8 +94,8 @@ public class ApplicationDetailsController {
 	
 	  
 	  @GetMapping("/downloadFromDB")
-		public void downloadFile(@RequestParam(value = "id" , required = true) int  loanId,HttpServletResponse response) throws Exception{
-			response.getOutputStream().write(fileContent(loanId, response));
+		public void downloadFile(@RequestParam(value = "id" , required = true) int  appId,HttpServletResponse response) throws Exception{
+			response.getOutputStream().write(fileContent(appId, response));
 		}
 	  
 	  private byte[] fileContent(int appId,HttpServletResponse response) {

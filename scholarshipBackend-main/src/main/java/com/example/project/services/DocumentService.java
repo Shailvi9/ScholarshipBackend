@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.project.models.Application_details;
+import com.example.project.models.ApplicationDetails;
 import com.example.project.models.DocumentDetails;
 import com.example.project.modelsDto.DocumentDto;
 import com.example.project.repository.DocumentRepository;
@@ -42,7 +42,7 @@ public class DocumentService {
 	public String postDet(DocumentDto docDet,int appId) {
 		
 		DocumentDetails doc = new DocumentDetails(docDet.getAdharNum(),docDet.getAccountNum(),docDet.getIfscNum(),docDet.getBranch(),docDet.getRollNum());
-		doc.setApplication_details(new Application_details(appId));
+		doc.setApplication_details(new ApplicationDetails(appId));
 		if(docRepo.save(doc)!=null){
 		  return "Successfully added document details";	
 		}

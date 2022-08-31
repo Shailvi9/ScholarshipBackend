@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @CrossOrigin(origins = "http://localhost:4200")
 
 @Entity
-public class Application_details {
+public class ApplicationDetails {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
@@ -79,7 +79,7 @@ public class Application_details {
 		this.userModel = userModel;
 	}
 
-	public Application_details(int appId) {
+	public ApplicationDetails(int appId) {
 		this.appId = appId;
 	}
 
@@ -180,7 +180,7 @@ public class Application_details {
 		this.documentType = documentType;
 	}
 
-	public Application_details( String image, String firstName, String lastName, String postalAddress,
+	public ApplicationDetails( String image, String firstName, String lastName, String postalAddress,
 			String collegeName, String state, String className,  String url,
 			byte[] document) {
 		super();
@@ -197,7 +197,7 @@ public class Application_details {
 		
 	}
 
-	public Application_details() {
+	public ApplicationDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

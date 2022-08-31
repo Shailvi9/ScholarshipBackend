@@ -42,16 +42,16 @@ public class UserModel {
 	
 	@OneToOne(mappedBy= "userModel" , fetch = FetchType.EAGER , orphanRemoval = true)
 	@JsonIgnore
-	private Application_details application_details;
+	private ApplicationDetails application_details;
 	
 
 
 
-	public Application_details getApplication_details() {
+	public ApplicationDetails getApplication_details() {
 		return application_details;
 	}
 
-	public void setApplication_details(Application_details application_details) {
+	public void setApplication_details(ApplicationDetails application_details) {
 		this.application_details = application_details;
 	}
 

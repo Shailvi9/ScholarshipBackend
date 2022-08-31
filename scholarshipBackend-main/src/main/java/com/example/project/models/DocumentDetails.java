@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.example.project.models.Application_details;
+import com.example.project.models.ApplicationDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -34,7 +34,7 @@ public class DocumentDetails {
 	@OneToOne(fetch= FetchType.EAGER)
 	//@JsonIgnore
 	@JoinColumn(name="applicationId", referencedColumnName = "appId")
-	private Application_details application_details;
+	private ApplicationDetails application_details;
 	
 	public DocumentDetails(String adharNum, String accountNum, String ifscNum, String branch,String rollNum) {
 		super();
@@ -117,20 +117,20 @@ public class DocumentDetails {
 
 
 
-	public Application_details getApplication_details() {
+	public ApplicationDetails getApplication_details() {
 		return application_details;
 	}
 
 
 
-	public void setApplication_details(Application_details application_details) {
+	public void setApplication_details(ApplicationDetails application_details) {
 		this.application_details = application_details;
 	}
 
 
 
 	public DocumentDetails(int id, String adharNum, String accountNum, String ifscNum, String branch, String rollNum,
-			Application_details application_details) {
+			ApplicationDetails application_details) {
 		super();
 		this.id = id;
 		this.adharNum = adharNum;
